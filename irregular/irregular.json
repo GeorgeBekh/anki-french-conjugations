@@ -1,0 +1,1322 @@
+[
+  {
+    "model": "lever",
+    "children": [
+      "achever",
+      "amener",
+      "cafeter",
+      "champlever",
+      "clairsemer",
+      "crever",
+      "dégrever",
+      "désengrener",
+      "égrener",
+      "élever",
+      "embrever",
+      "emmener",
+      "empeser",
+      "enchifrener",
+      "engrener",
+      "enlever",
+      "fosserer",
+      "gangrener",
+      "grener",
+      "grever",
+      "halener",
+      "liserer",
+      "malmener",
+      "mener",
+      "parachever",
+      "parsemer",
+      "peser",
+      "prélever",
+      "promener",
+      "ramener",
+      "receper",
+      "relever",
+      "remmener",
+      "remodeler",
+      "rengrener",
+      "ressemer",
+      "se démener",
+      "semer",
+      "sevrer",
+      "soulever",
+      "soupeser",
+      "surélever",
+      "surmener",
+      "sursemer"
+    ]
+  },
+  {
+    "model": "céder",
+    "children": []
+  },
+  {
+    "model": "commencer",
+    "children": [
+      "acquiescer",
+      "agacer",
+      "agencer",
+      "amorcer",
+      "amordancer",
+      "annoncer",
+      "autofinancer",
+      "avancer",
+      "balancer",
+      "bercer",
+      "cadencer",
+      "carencer",
+      "clamecer",
+      "coalescer",
+      "coincer",
+      "commercer",
+      "concurrencer",
+      "contrebalancer",
+      "courroucer",
+      "décoincer",
+      "décontenancer",
+      "dédicacer",
+      "défoncer",
+      "déforcer",
+      "défroncer",
+      "déglacer",
+      "délacer",
+      "dénoncer",
+      "dépecer",
+      "déplacer",
+      "désagencer",
+      "désamorcer",
+      "désenlacer",
+      "devancer",
+      "distancer",
+      "divorcer",
+      "écorcer",
+      "effacer",
+      "élancer",
+      "émincer",
+      "enfoncer",
+      "engoncer",
+      "enjoncer",
+      "enlacer",
+      "énoncer",
+      "ensemencer",
+      "entrelacer",
+      "épicer",
+      "épincer",
+      "épucer",
+      "espacer",
+      "évincer",
+      "exaucer",
+      "exercer",
+      "fiancer",
+      "financer",
+      "foncer",
+      "forcer",
+      "forlancer",
+      "froncer",
+      "garancer",
+      "gercer",
+      "glacer",
+      "grimacer",
+      "grincer",
+      "influencer",
+      "interfacer",
+      "joncer",
+      "lacer",
+      "lancer",
+      "manigancer",
+      "matricer",
+      "menacer",
+      "mordancer",
+      "nuancer",
+      "opiacer",
+      "ordonnancer",
+      "percer",
+      "pincer",
+      "pioncer",
+      "placer",
+      "policer",
+      "poncer",
+      "préfacer",
+      "prononcer",
+      "quittancer",
+      "rapiécer",
+      "réamorcer",
+      "recommencer",
+      "réensemencer",
+      "référencer",
+      "relancer",
+      "remplacer",
+      "renfoncer",
+      "renforcer",
+      "renoncer",
+      "repercer",
+      "repincer",
+      "replacer",
+      "ressourcer",
+      "retercer",
+      "retracer",
+      "rincer",
+      "romancer",
+      "s'efforcer",
+      "s'immiscer",
+      "saucer",
+      "semoncer",
+      "séquencer",
+      "sérancer",
+      "sucer",
+      "surfacer",
+      "surglacer",
+      "tancer",
+      "tercer",
+      "tiercer",
+      "tracer",
+      "transpercer",
+      "verglacer",
+      "violacer"
+    ]
+  },
+  {
+    "model": "manger",
+    "children": [
+      "abroger",
+      "adjuger",
+      "afféager",
+      "affliger",
+      "affourager",
+      "allonger",
+      "aménager",
+      "apanager",
+      "arranger",
+      "arrérager",
+      "asperger",
+      "attiger",
+      "avantager",
+      "badger",
+      "bauger",
+      "bouger",
+      "boulanger",
+      "bridger",
+      "calorifuger",
+      "centrifuger",
+      "challenger",
+      "changer",
+      "charger",
+      "colliger",
+      "converger",
+      "copartager",
+      "corriger",
+      "décharger",
+      "décourager",
+      "dédommager",
+      "dégager",
+      "dégorger",
+      "déjauger",
+      "déjuger",
+      "déloger",
+      "démanger",
+      "déménager",
+      "déneiger",
+      "départager",
+      "dérager",
+      "déranger",
+      "déroger",
+      "désavantager",
+      "désengager",
+      "désengorger",
+      "désobliger",
+      "déterger",
+      "dévisager",
+      "diriger",
+      "diverger",
+      "échanger",
+      "effranger",
+      "égorger",
+      "égruger",
+      "élonger",
+      "émarger",
+      "émerger",
+      "emménager",
+      "encager",
+      "encourager",
+      "endommager",
+      "engager",
+      "engorger",
+      "engranger",
+      "enneiger",
+      "ennuager",
+      "enrager",
+      "ensauvager",
+      "enverger",
+      "envisager",
+      "éponger",
+      "ériger",
+      "esclavager",
+      "essanger",
+      "étager",
+      "étalager",
+      "étranger",
+      "exiger",
+      "expurger",
+      "figer",
+      "forger",
+      "forlonger",
+      "fouger",
+      "fourrager",
+      "franger",
+      "frigorifuger",
+      "fumiger",
+      "fustiger",
+      "gager",
+      "gamberger",
+      "gorger",
+      "grillager",
+      "gruger",
+      "héberger",
+      "herbager",
+      "hydrofuger",
+      "ignifuger",
+      "imager",
+      "immerger",
+      "infliger",
+      "interroger",
+      "jauger",
+      "juger",
+      "langer",
+      "léviger",
+      "limoger",
+      "loger",
+      "longer",
+      "louanger",
+      "manager",
+      "marger",
+      "méjuger",
+      "mélanger",
+      "ménager",
+      "mitiger",
+      "nager",
+      "naufrager",
+      "négliger",
+      "neiger",
+      "obliger",
+      "ombrager",
+      "oranger",
+      "outrager",
+      "ouvrager",
+      "pacager",
+      "pager",
+      "partager",
+      "patauger",
+      "piger",
+      "plonger",
+      "préjuger",
+      "présager",
+      "prolonger",
+      "propager",
+      "proroger",
+      "purger",
+      "quartager",
+      "rager",
+      "rallonger",
+      "ramager",
+      "ranger",
+      "ravager",
+      "réaménager",
+      "réarranger",
+      "rechanger",
+      "recharger",
+      "recorriger",
+      "rédiger",
+      "réengager",
+      "regorger",
+      "reloger",
+      "remanger",
+      "rembouger",
+      "reneiger",
+      "rengager",
+      "repartager",
+      "replonger",
+      "ronger",
+      "s'arroger",
+      "s'entre-égorger",
+      "s'entre-manger",
+      "s'entrobliger",
+      "s'insurger",
+      "saccager",
+      "se goberger",
+      "se linger",
+      "se rengorger",
+      "se repartager",
+      "singer",
+      "songer",
+      "soulager",
+      "submerger",
+      "subroger",
+      "surcharger",
+      "surnager",
+      "tapager",
+      "télécharger",
+      "transiger",
+      "treillager",
+      "urger",
+      "vendanger",
+      "venger",
+      "verger",
+      "vidanger",
+      "voliger",
+      "voltiger",
+      "voyager"
+    ]
+  },
+  {
+    "model": "appeler",
+    "children": [
+      "agneler",
+      "aiguilleter",
+      "amonceler",
+      "anneler",
+      "atteler",
+      "banqueter",
+      "baqueter",
+      "bateler",
+      "bêcheveter",
+      "becqueter",
+      "béqueter",
+      "bosseler",
+      "botteler",
+      "bourreler",
+      "bretteler",
+      "breveter",
+      "briqueter",
+      "cacheter",
+      "cailleter",
+      "caleter",
+      "canneler",
+      "capeler",
+      "caqueter",
+      "carreler",
+      "chanceler",
+      "chapeler",
+      "chevreter",
+      "claqueter",
+      "claveter",
+      "cliqueter",
+      "colleter",
+      "coqueter",
+      "cordeler",
+      "craqueler",
+      "craqueter",
+      "créneler",
+      "cureter",
+      "cuveler",
+      "débecqueter",
+      "débéqueter",
+      "débosseler",
+      "décacheter",
+      "décapeler",
+      "décarreler",
+      "décerveler",
+      "décheveler",
+      "déchiqueter",
+      "déclaveter",
+      "décliqueter",
+      "décolleter",
+      "déficeler",
+      "déjeter",
+      "démoucheter",
+      "démuseler",
+      "dénickeler",
+      "déniveler",
+      "denteler",
+      "dépaqueter",
+      "dépuceler",
+      "désensorceler",
+      "dételer",
+      "ébiseler",
+      "écheveler",
+      "émoucheter",
+      "empaqueter",
+      "encliqueter",
+      "engrumeler",
+      "enjaveler",
+      "ensorceler",
+      "épanneler",
+      "épeler",
+      "épinceter",
+      "épousseter",
+      "étinceler",
+      "étiqueter",
+      "feuilleter",
+      "ficeler",
+      "fleureter",
+      "forjeter",
+      "fuseler",
+      "greneler",
+      "griveler",
+      "grommeler",
+      "guillemeter",
+      "hoqueter",
+      "interjeter",
+      "jarreter",
+      "javeler",
+      "jeter",
+      "jumeler",
+      "louveter",
+      "marqueter",
+      "moleter",
+      "morceler",
+      "moucheter",
+      "moufeter",
+      "mugueter",
+      "museler",
+      "nickeler",
+      "niveler",
+      "oiseler",
+      "pailleter",
+      "panteler",
+      "parqueter",
+      "pelleter",
+      "piqueter",
+      "projeter",
+      "raineter",
+      "rappeler",
+      "râteler",
+      "recacheter",
+      "recarreler",
+      "rejeter",
+      "reloqueter",
+      "rempaqueter",
+      "renouveler",
+      "ressemeler",
+      "riveter",
+      "ruisseler",
+      "se béqueter",
+      "se duveter",
+      "se grumeler",
+      "se pommeler",
+      "souffleter",
+      "surjeter",
+      "tacheter",
+      "taveler",
+      "trompeter",
+      "voleter"
+    ]
+  },
+  {
+    "model": "acheter",
+    "children": [
+      "bégueter",
+      "celer",
+      "ciseler",
+      "congeler",
+      "corseter",
+      "crocheter",
+      "déceler",
+      "décongeler",
+      "dégeler",
+      "démanteler",
+      "écarteler",
+      "encasteler",
+      "épinceler",
+      "fileter",
+      "fureter",
+      "geler",
+      "haleter",
+      "harceler",
+      "marteler",
+      "modeler",
+      "peler",
+      "racheter",
+      "receler",
+      "regeler",
+      "surgeler"
+    ]
+  },
+  {
+    "model": "protéger",
+    "children": []
+  },
+  {
+    "model": "payer",
+    "children": [
+      "balayer",
+      "bayer",
+      "bégayer",
+      "brayer",
+      "cartayer",
+      "déblayer",
+      "débrayer",
+      "défrayer",
+      "délayer",
+      "dérayer",
+      "désenrayer",
+      "drayer",
+      "effrayer",
+      "égayer",
+      "embrayer",
+      "enrayer",
+      "essayer",
+      "étayer",
+      "frayer",
+      "layer",
+      "monnayer",
+      "pagayer",
+      "prépayer",
+      "rayer",
+      "réessayer",
+      "relayer",
+      "remblayer",
+      "repayer",
+      "ressayer",
+      "sous-payer",
+      "surpayer",
+      "zézayer"
+    ]
+  },
+  {
+    "model": "employer",
+    "children": [
+      "aboyer",
+      "apitoyer",
+      "appuyer",
+      "atermoyer",
+      "avoyer",
+      "blondoyer",
+      "bornoyer",
+      "broyer",
+      "carroyer",
+      "charroyer",
+      "chatoyer",
+      "choyer",
+      "convoyer",
+      "corroyer",
+      "côtoyer",
+      "coudoyer",
+      "dégravoyer",
+      "dénoyer",
+      "déployer",
+      "désennuyer",
+      "dévoyer",
+      "ennoyer",
+      "ennuyer",
+      "éployer",
+      "essuyer",
+      "festoyer",
+      "flamboyer",
+      "fossoyer",
+      "foudroyer",
+      "fourvoyer",
+      "grossoyer",
+      "guerroyer",
+      "hongroyer",
+      "jointoyer",
+      "larmoyer",
+      "louvoyer",
+      "merdoyer",
+      "nettoyer",
+      "noyer",
+      "octroyer",
+      "ondoyer",
+      "paumoyer",
+      "ployer",
+      "poudroyer",
+      "réemployer",
+      "rejointoyer",
+      "remployer",
+      "reployer",
+      "ressuyer",
+      "rougeoyer",
+      "rudoyer",
+      "soudoyer",
+      "sous-employer",
+      "tournoyer",
+      "tutoyer",
+      "verdoyer",
+      "vousoyer",
+      "voussoyer",
+      "vouvoyer"
+    ]
+  },
+  {
+    "model": "envoyer",
+    "children": [
+      "renvoyer"
+    ]
+  },
+  {
+    "model": "aller",
+    "children": []
+  },
+  {
+    "model": "tenir",
+    "children": [
+      "advenir",
+      "appartenir",
+      "avenir",
+      "bienvenir",
+      "circonvenir",
+      "contenir",
+      "contrevenir",
+      "convenir",
+      "détenir",
+      "devenir",
+      "disconvenir",
+      "entretenir",
+      "intervenir",
+      "maintenir",
+      "obtenir",
+      "obvenir",
+      "parvenir",
+      "prévenir",
+      "provenir",
+      "redevenir",
+      "retenir",
+      "revenir",
+      "s'abstenir",
+      "se ressouvenir",
+      "se souvenir",
+      "soutenir",
+      "souvenir",
+      "subvenir",
+      "survenir",
+      "venir"
+    ]
+  },
+  {
+    "model": "partir",
+    "children": [
+      "consentir",
+      "démentir",
+      "départir",
+      "mentir",
+      "pressentir",
+      "repartir",
+      "ressentir",
+      "ressortir",
+      "se repentir",
+      "sentir",
+      "sortir"
+    ]
+  },
+  {
+    "model": "ouvrir",
+    "children": [
+      "couvrir",
+      "découvrir",
+      "entrouvrir",
+      "offrir",
+      "recouvrir",
+      "redécouvrir",
+      "rentrouvrir",
+      "rouvrir",
+      "souffrir"
+    ]
+  },
+  {
+    "model": "acquérir",
+    "children": []
+  },
+  {
+    "model": "assaillir",
+    "children": [
+      "défaillir",
+      "saillir",
+      "tressaillir"
+    ]
+  },
+  {
+    "model": "bouillir",
+    "children": [
+      "débouillir",
+      "rebouillir"
+    ]
+  },
+  {
+    "model": "dormir",
+    "children": [
+      "endormir",
+      "redormir",
+      "rendormir"
+    ]
+  },
+  {
+    "model": "courir",
+    "children": [
+      "accourir",
+      "concourir",
+      "discourir",
+      "encourir",
+      "férir",
+      "parcourir",
+      "recourir",
+      "secourir"
+    ]
+  },
+  {
+    "model": "cueillir",
+    "children": [
+      "accueillir",
+      "recueillir"
+    ]
+  },
+  {
+    "model": "fuir",
+    "children": [
+      "refuir",
+      "s'enfuir"
+    ]
+  },
+  {
+    "model": "servir",
+    "children": [
+      "desservir",
+      "resservir"
+    ]
+  },
+  {
+    "model": "vêtir",
+    "children": []
+  },
+  {
+    "model": "faillir",
+    "children": []
+  },
+  {
+    "model": "gésir",
+    "children": []
+  },
+  {
+    "model": "mourir",
+    "children": [
+      "se mourir"
+    ]
+  },
+  {
+    "model": "haïr",
+    "children": []
+  },
+  {
+    "model": "recevoir",
+    "children": [
+      "apercevoir",
+      "concevoir",
+      "décevoir",
+      "entr'apercevoir",
+      "entrapercevoir",
+      "percevoir",
+      "reconcevoir"
+    ]
+  },
+  {
+    "model": "voir",
+    "children": [
+      "entrevoir",
+      "prévoir",
+      "revoir"
+    ]
+  },
+  {
+    "model": "pourvoir",
+    "children": [
+      "dépourvoir"
+    ]
+  },
+  {
+    "model": "devoir",
+    "children": [
+      "redevoir"
+    ]
+  },
+  {
+    "model": "mouvoir",
+    "children": [
+      "émouvoir",
+      "promouvoir"
+    ]
+  },
+  {
+    "model": "pleuvoir",
+    "children": [
+      "repleuvoir"
+    ]
+  },
+  {
+    "model": "valoir",
+    "children": [
+      "chaloir",
+      "équivaloir",
+      "prévaloir",
+      "revaloir"
+    ]
+  },
+  {
+    "model": "asseoir",
+    "children": [
+      "assoir",
+      "rasseoir",
+      "rassoir"
+    ]
+  },
+  {
+    "model": "choir",
+    "children": []
+  },
+  {
+    "model": "échoir",
+    "children": []
+  },
+  {
+    "model": "déchoir",
+    "children": []
+  },
+  {
+    "model": "falloir",
+    "children": []
+  },
+  {
+    "model": "pouvoir",
+    "children": [
+      "se pouvoir"
+    ]
+  },
+  {
+    "model": "savoir",
+    "children": [
+      "assavoir",
+      "resavoir"
+    ]
+  },
+  {
+    "model": "seoir",
+    "children": []
+  },
+  {
+    "model": "messeoir",
+    "children": []
+  },
+  {
+    "model": "surseoir",
+    "children": []
+  },
+  {
+    "model": "vouloir",
+    "children": [
+      "comparoir"
+    ]
+  },
+  {
+    "model": "traduire",
+    "children": [
+      "conduire",
+      "construire",
+      "cuire",
+      "déduire",
+      "détruire",
+      "duire",
+      "éconduire",
+      "enduire",
+      "induire",
+      "instruire",
+      "introduire",
+      "luire",
+      "nuire",
+      "produire",
+      "reconduire",
+      "reconstruire",
+      "recuire",
+      "réduire",
+      "réintroduire",
+      "reluire",
+      "renduire",
+      "reproduire",
+      "retraduire",
+      "s'autodétruire",
+      "s'entre-détruire",
+      "s'entre-nuire",
+      "se méconduire",
+      "séduire",
+      "sous-traduire",
+      "surproduire"
+    ]
+  },
+  {
+    "model": "connaître",
+    "children": []
+  },
+  {
+    "model": "accroître",
+    "children": []
+  },
+  {
+    "model": "atteindre",
+    "children": [
+      "astreindre",
+      "ceindre",
+      "dépeindre",
+      "déteindre",
+      "empreindre",
+      "enceindre",
+      "enfreindre",
+      "épreindre",
+      "éteindre",
+      "étreindre",
+      "feindre",
+      "geindre",
+      "peindre",
+      "repeindre",
+      "restreindre",
+      "reteindre",
+      "teindre"
+    ]
+  },
+  {
+    "model": "joindre",
+    "children": [
+      "adjoindre",
+      "conjoindre",
+      "disjoindre",
+      "enjoindre",
+      "oindre",
+      "poindre",
+      "rejoindre"
+    ]
+  },
+  {
+    "model": "craindre",
+    "children": [
+      "contraindre",
+      "plaindre",
+      "retreindre"
+    ]
+  },
+  {
+    "model": "conclure",
+    "children": [
+      "exclure",
+      "inclure",
+      "occlure",
+      "reclure"
+    ]
+  },
+  {
+    "model": "absoudre",
+    "children": [
+      "dissoudre",
+      "résoudre",
+      "sourdre"
+    ]
+  },
+  {
+    "model": "distraire",
+    "children": [
+      "abstraire",
+      "braire",
+      "extraire",
+      "raire",
+      "retraire",
+      "soustraire",
+      "traire"
+    ]
+  },
+  {
+    "model": "plaire",
+    "children": [
+      "complaire",
+      "déplaire",
+      "taire"
+    ]
+  },
+  {
+    "model": "mettre",
+    "children": [
+      "admettre",
+      "commettre",
+      "compromettre",
+      "décommettre",
+      "démettre",
+      "émettre",
+      "omettre",
+      "permettre",
+      "promettre",
+      "réadmettre",
+      "remettre",
+      "retransmettre",
+      "s'entremettre",
+      "soumettre",
+      "transmettre"
+    ]
+  },
+  {
+    "model": "prendre",
+    "children": [
+      "apprendre",
+      "comprendre",
+      "déprendre",
+      "désapprendre",
+      "entreprendre",
+      "rapprendre",
+      "réapprendre",
+      "reprendre",
+      "s'éprendre",
+      "se méprendre",
+      "surprendre"
+    ]
+  },
+  {
+    "model": "battre",
+    "children": [
+      "abattre",
+      "combattre",
+      "contrebattre",
+      "débattre",
+      "embatre",
+      "embattre",
+      "rabattre",
+      "rebattre",
+      "s'ébattre",
+      "s'entrebattre"
+    ]
+  },
+  {
+    "model": "vaincre",
+    "children": [
+      "convaincre"
+    ]
+  },
+  {
+    "model": "faire",
+    "children": [
+      "contrefaire",
+      "défaire",
+      "forfaire",
+      "malfaire",
+      "méfaire",
+      "parfaire",
+      "redéfaire",
+      "refaire",
+      "satisfaire",
+      "stupéfaire",
+      "surfaire"
+    ]
+  },
+  {
+    "model": "naître",
+    "children": []
+  },
+  {
+    "model": "croire",
+    "children": [
+      "accroire"
+    ]
+  },
+  {
+    "model": "boire",
+    "children": [
+      "emboire"
+    ]
+  },
+  {
+    "model": "clore",
+    "children": [
+      "déclore",
+      "éclore",
+      "enclore",
+      "forclore"
+    ]
+  },
+  {
+    "model": "coudre",
+    "children": [
+      "découdre",
+      "recoudre"
+    ]
+  },
+  {
+    "model": "moudre",
+    "children": [
+      "émoudre",
+      "remoudre"
+    ]
+  },
+  {
+    "model": "suivre",
+    "children": [
+      "poursuivre",
+      "s'ensuivre"
+    ]
+  },
+  {
+    "model": "vivre",
+    "children": [
+      "revivre",
+      "survivre"
+    ]
+  },
+  {
+    "model": "lire",
+    "children": [
+      "élire",
+      "réélire",
+      "relire"
+    ]
+  },
+  {
+    "model": "dire",
+    "children": [
+      "contredire",
+      "dédire",
+      "interdire",
+      "médire",
+      "prédire",
+      "redire"
+    ]
+  },
+  {
+    "model": "rire",
+    "children": [
+      "sourire"
+    ]
+  },
+  {
+    "model": "écrire",
+    "children": []
+  },
+  {
+    "model": "frire",
+    "children": [
+      "circoncire",
+      "déconfire",
+      "suffire"
+    ]
+  },
+  {
+    "model": "paître",
+    "children": []
+  },
+  {
+    "model": "repaître",
+    "children": []
+  },
+  {
+    "model": "maudire",
+    "children": [
+      "tenir",
+      "partir",
+      "ouvrir",
+      "acquérir",
+      "assaillir",
+      "bouillir",
+      "dormir",
+      "courir",
+      "cueillir",
+      "fuir",
+      "servir",
+      "vêtir",
+      "faillir",
+      "gésir",
+      "mourir",
+      "haïr",
+      "recevoir",
+      "voir",
+      "pourvoir",
+      "devoir",
+      "mouvoir",
+      "pleuvoir",
+      "valoir",
+      "asseoir",
+      "choir",
+      "échoir",
+      "déchoir",
+      "falloir",
+      "pouvoir",
+      "savoir",
+      "seoir",
+      "messeoir",
+      "surseoir",
+      "vouloir"
+    ]
+  },
+  {
+    "model": "foutre",
+    "children": [
+      "traduire",
+      "connaître",
+      "accroître",
+      "atteindre",
+      "joindre",
+      "craindre",
+      "conclure",
+      "absoudre",
+      "distraire",
+      "plaire",
+      "mettre",
+      "prendre",
+      "battre",
+      "vaincre",
+      "faire",
+      "naître",
+      "croire",
+      "boire",
+      "clore",
+      "coudre",
+      "moudre",
+      "suivre",
+      "vivre",
+      "lire",
+      "dire",
+      "rire",
+      "écrire",
+      "frire",
+      "paître",
+      "repaître",
+      "maudire",
+      "foutre",
+      "contrefoutre",
+      "être"
+    ]
+  },
+  {
+    "model": "contrefoutre",
+    "children": [
+      "traduire",
+      "connaître",
+      "accroître",
+      "atteindre",
+      "joindre",
+      "craindre",
+      "conclure",
+      "absoudre",
+      "distraire",
+      "plaire",
+      "mettre",
+      "prendre",
+      "battre",
+      "vaincre",
+      "faire",
+      "naître",
+      "croire",
+      "boire",
+      "clore",
+      "coudre",
+      "moudre",
+      "suivre",
+      "vivre",
+      "lire",
+      "dire",
+      "rire",
+      "écrire",
+      "frire",
+      "paître",
+      "repaître",
+      "maudire",
+      "foutre",
+      "contrefoutre",
+      "être"
+    ]
+  },
+  {
+    "model": "être",
+    "children": []
+  }
+]
