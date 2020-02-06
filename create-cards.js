@@ -2,10 +2,35 @@ var sqlite3 = require("sqlite3").verbose();
 const fs = require("fs");
 const { Readable } = require("stream");
 const childProcess = require("child_process");
+const stringify = require("csv-stringify/lib/sync");
 
 const conjugationMapping = {
   default: ["je", "tu", "il, elle, on", "nous", "vous", "ils, elles"],
   "imperative present": ["tu", "nous", "vous"]
+};
+
+const actualTenses = [
+  "indicative present",
+  "participle past",
+  "indicative imperfect",
+  "participle present",
+
+  "indicative future",
+  "conditional present",
+  "subjunctive present",
+  "imperative present"
+];
+
+const namingMap = {
+  "indicative present": "présent",
+  "participle past": "participe passé",
+  "indicative imperfect": "imparfait",
+  "participle present": "participe passé",
+
+  "indicative future": "futur simple",
+  "conditional present": "conditionnel",
+  "subjunctive present": "subjonctif",
+  "imperative present": "impératif"
 };
 
 const regular = {
@@ -17,6 +42,7 @@ const models = {};
 const irregular = {};
 
 const childrenToModels = {};
+let cards = [];
 JSON.parse(fs.readFileSync("./irregular/irregular.json")).forEach(obj => {
   obj.children.forEach(child => {
     irregular[child] = obj.model;
@@ -47,7 +73,7 @@ JSON.parse(fs.readFileSync("./irregular/irregular.json")).forEach(obj => {
         ORDER BY
           avg DESC
         LIMIT
-          1000;
+          20;
         `
     )
   ).map(({ lemme }) => lemme);
@@ -55,9 +81,54 @@ JSON.parse(fs.readFileSync("./irregular/irregular.json")).forEach(obj => {
   for (let i = 0; i < verbs.length; i++) {
     const verb = verbs[i];
     if (models.hasOwnProperty(verb)) {
-      console.log(conjugate(verb));
+      const conjugations = conjugate(verb);
+      cards.push({
+        verb,
+        tense: "infinitive present",
+        definition: dictionaryDefinition(verb)
+      });
+      for (let j = 0; j < actualTenses.length; j++) {
+        const tense = actualTenses[j];
+        if (typeof conjugations[tense] === "string") {
+          const ipa = getIPA(conjugations[tense]);
+          cards.push({
+            verb,
+            tense,
+            conjugation: conjugations[tense]
+          });
+        } else {
+          for (var pronoun in conjugations[tense]) {
+            const conjugation = conjugations[tense][pronoun];
+            cards.push({
+              verb,
+              tense,
+              conjugation,
+              pronoun
+            });
+          }
+        }
+      }
     }
   }
+
+  cards.map((card, index) => {
+    const ipa = getIPA(card.conjugation || card.verb);
+    card.ipa = ipa;
+    card.index = index;
+    card.tense = namingMap[card.tense];
+  });
+  const data = stringify(cards, {
+    columns: [
+      "index",
+      "verb",
+      "tense",
+      "pronoun",
+      "conjugation",
+      "ipa",
+      "definition"
+    ]
+  });
+  console.log("data: ", data);
 })();
 
 function select(database, sql) {
@@ -85,9 +156,6 @@ function select(database, sql) {
 }
 
 function conjugate(verb) {
-  if (verb !== "pleuvoir") {
-    return;
-  }
   const lines = childProcess
     .execSync("french-conjugator " + verb)
     .toString()
@@ -134,4 +202,26 @@ function conjugate(verb) {
     counter++;
   }
   return result;
+}
+
+function getIPA(word) {
+  return childProcess
+    .execSync("espeak -q -v fr --ipa " + word)
+    .toString()
+    .split("\n")[0]
+    .split(" ")[1];
+}
+
+function dictionaryDefinition(word) {
+  let result = "";
+  try {
+    result = childProcess.execSync("dict -d fd-fra-rus -f " + word);
+  } catch (err) {
+    result = childProcess.execSync("dict -d fd-fra-eng -f " + word);
+  }
+  return result
+    .toString()
+    .split("\n")
+    .slice(3)
+    .join("\n");
 }
