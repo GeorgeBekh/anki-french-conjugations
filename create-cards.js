@@ -1,22 +1,20 @@
+"use strict";
+
 var sqlite3 = require("sqlite3").verbose();
 const fs = require("fs");
 const { Readable } = require("stream");
 const childProcess = require("child_process");
 const stringify = require("csv-stringify/lib/sync");
+const conjugate = require("./conjugate");
+const { promisify } = require("util");
 
-const conjugationMapping = {
-  default: ["je", "tu", "il, elle, on", "nous", "vous", "ils, elles"],
-  "imperative present": ["tu", "nous", "vous"]
-};
-
-const actualTenses = [
+const tenses = [
   "indicative present",
+  "participle present",
   "participle past",
   "indicative imperfect",
-  "participle present",
 
   "indicative future",
-  "conditional present",
   "subjunctive present",
   "imperative present"
 ];
@@ -25,33 +23,26 @@ const namingMap = {
   "indicative present": "présent",
   "participle past": "participe passé",
   "indicative imperfect": "imparfait",
-  "participle present": "participe passé",
+  "participle present": "participe présent",
 
-  "indicative future": "futur simple",
-  "conditional present": "conditionnel",
   "subjunctive present": "subjonctif",
   "imperative present": "impératif"
 };
 
 const regular = {
-  er: "parler",
-  ir: "choisir",
-  re: "vendre"
+  parler: "re",
+  choisir: "ir",
+  vendre: "re"
 };
 const models = {};
 const irregular = {};
 
 const childrenToModels = {};
-let cards = [];
-JSON.parse(fs.readFileSync("./irregular/irregular.json")).forEach(obj => {
+JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
   obj.children.forEach(child => {
-    irregular[child] = obj.model;
+    childrenToModels[child] = obj.model;
   });
   models[obj.model] = false;
-  for (let i = 0; i < obj.children.length; i++) {
-    const verb = obj.children[i];
-    childrenToModels[verb] = obj.model;
-  }
 });
 
 (async function() {
@@ -78,57 +69,91 @@ JSON.parse(fs.readFileSync("./irregular/irregular.json")).forEach(obj => {
     )
   ).map(({ lemme }) => lemme);
 
-  for (let i = 0; i < verbs.length; i++) {
-    const verb = verbs[i];
-    if (models.hasOwnProperty(verb)) {
-      const conjugations = conjugate(verb);
-      cards.push({
-        verb,
-        tense: "infinitive present",
-        definition: dictionaryDefinition(verb)
-      });
-      for (let j = 0; j < actualTenses.length; j++) {
-        const tense = actualTenses[j];
-        if (typeof conjugations[tense] === "string") {
-          const ipa = getIPA(conjugations[tense]);
-          cards.push({
-            verb,
-            tense,
-            conjugation: conjugations[tense]
-          });
-        } else {
-          for (var pronoun in conjugations[tense]) {
-            const conjugation = conjugations[tense][pronoun];
-            cards.push({
-              verb,
-              tense,
-              conjugation,
-              pronoun
-            });
-          }
-        }
+  const promises = verbs.map(async (verb, i) => {
+    let cards = [];
+    if (!models.hasOwnProperty(verb)) {
+      const model = childrenToModels[verb];
+      if (!model) {
+        //regular verb
+        return [];
       }
+      console.log("model: ", model);
+      return [
+        {
+          verb,
+          definition: dictionaryDefinition(verb)
+        },
+        {
+          verb,
+          model
+        }
+      ];
     }
-  }
 
-  cards.map((card, index) => {
-    const ipa = getIPA(card.conjugation || card.verb);
-    card.ipa = ipa;
-    card.index = index;
-    card.tense = namingMap[card.tense];
+    cards.push({
+      verb,
+      tense: "infinitive present",
+      definition: dictionaryDefinition(verb)
+    });
+    const conjugations = await conjugate(verb);
+    tenses.forEach(tense => {
+      cards = cards.concat(conjugationsForTense(verb, conjugations, tense));
+    });
+
+    return cards;
   });
+
+  const conjugatedVerbs = (await Promise.all(promises)).reduce(
+    (result, elem) => result.concat(elem),
+    []
+  );
+  const cards = await Promise.all(
+    conjugatedVerbs.map(
+      async (
+        { conjugation, verb, definition, tense, pronoun, base, model },
+        index
+      ) => {
+        const ipa = await getIPA(conjugation || base || verb);
+        let question;
+        if (model) {
+          question = "conjugué comme...";
+        } else if (base) {
+          question = "futur, conditionnel (base)";
+        } else if (conjugation) {
+          question = `${namingMap[tense]}<br/>${pronoun}`;
+        } else {
+          question = "définition";
+        }
+        return {
+          index: index,
+          verb,
+          question,
+
+          conjugation,
+          ipa: ipa,
+          definition,
+          isRegular: regular[verb] && 1,
+          base,
+          model
+        };
+      }
+    )
+  );
+
   const data = stringify(cards, {
     columns: [
       "index",
       "verb",
-      "tense",
-      "pronoun",
+      "question",
       "conjugation",
       "ipa",
-      "definition"
+      "definition",
+      "isRegular",
+      "base",
+      "model"
     ]
   });
-  console.log("data: ", data);
+  console.log(data);
 })();
 
 function select(database, sql) {
@@ -155,61 +180,17 @@ function select(database, sql) {
   });
 }
 
-function conjugate(verb) {
-  const lines = childProcess
-    .execSync("french-conjugator " + verb)
-    .toString()
-    .split("\n");
-
-  if (lines[0] === "-") {
-    throw new Error("Cannot conjugate " + verb);
-  }
-
-  const result = {};
-  let tense;
-  let counter = 0;
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    if (line === "-") {
-      continue;
-    }
-
-    if (line.indexOf("- ") !== -1) {
-      tense = line.substring(0, line.length - 1).split("- ")[1];
-      counter = 0;
-      continue;
-    }
-
-    if (["infinitive present", "participle present"].includes(tense)) {
-      result[tense] = line;
-      continue;
-    }
-    if (tense === "participle past" && !result[tense]) {
-      result[tense] = line;
-      continue;
-    } else if (tense === "participle past") {
-      continue;
-    }
-
-    if (!result[tense]) {
-      result[tense] = {};
-    }
-    if (tense === "imperative present") {
-      result[tense][conjugationMapping["imperative present"][counter]] = line;
-    } else {
-      result[tense][conjugationMapping["default"][counter]] = line;
-    }
-    counter++;
-  }
-  return result;
-}
-
-function getIPA(word) {
-  return childProcess
-    .execSync("espeak -q -v fr --ipa " + word)
-    .toString()
-    .split("\n")[0]
-    .split(" ")[1];
+async function getIPA(word) {
+  return (
+    //Prefix 'tu' fixes the error when 'as' is transcribed as 'as instead of 'a
+    (
+      await promisify(childProcess.exec)(
+        'espeak -q -v fr --ipa "tu ' + word + '"'
+      )
+    ).stdout
+      .split("\n")[0]
+      .split(" ")[2]
+  );
 }
 
 function dictionaryDefinition(word) {
@@ -224,4 +205,49 @@ function dictionaryDefinition(word) {
     .split("\n")
     .slice(3)
     .join("\n");
+}
+
+function conjugationsForTense(verb, conjugations, tense) {
+  const result = [];
+
+  if (typeof conjugations[tense] === "string") {
+    result.push({
+      verb,
+      tense,
+      conjugation: conjugations[tense]
+    });
+
+    return result;
+  } else if (tense === "indicative future") {
+    result.push({
+      verb,
+      base: getBaseFuture(conjugations[tense])
+    });
+    return result;
+  }
+
+  for (let pronoun in conjugations[tense]) {
+    const conjugation = conjugations[tense][pronoun];
+    if (!conjugation) {
+      continue;
+    }
+    result.push({
+      verb,
+      tense,
+      conjugation,
+      pronoun
+    });
+  }
+
+  return result;
+}
+
+function getBaseFuture(futureConjs) {
+  const conj = futureConjs["il, elle, on"];
+  return conj.substring(0, conj.length - 1);
+}
+
+function getBaseConditional(conditionalConjs) {
+  const conj = conditionalConjs["il, elle, on"];
+  return conj.substring(0, conj.length - 3);
 }
