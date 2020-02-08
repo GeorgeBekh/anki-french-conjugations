@@ -64,7 +64,7 @@ JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
         ORDER BY
           avg DESC
         LIMIT
-          500
+          1000
         `
     )
   ).map(({ lemme }) => lemme);
@@ -106,7 +106,7 @@ JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
         { conjugation, verb, definition, tense, pronoun, base, model },
         index
       ) => {
-        const ipa = await getIPA(conjugation || base || verb);
+        const ipa = await getIPA(conjugation || base || model || verb);
         let question;
         if (model) {
           question = "conjugue comme...";
@@ -123,7 +123,7 @@ JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
           question,
 
           conjugation,
-          ipa: ipa,
+          ipa: ipa.trim(),
           definition,
           isRegular: regular[verb] && 1,
           base,
@@ -181,8 +181,9 @@ async function getIPA(word) {
         'espeak -q -v fr --ipa "tu ' + word + '"'
       )
     ).stdout
-      .split("\n")[0]
-      .split(" ")[2]
+      .slice(3)
+      .split("\n")
+      .join("")
   );
 }
 
@@ -197,9 +198,7 @@ function dictionaryDefinition(word) {
       result = "";
     }
   }
-
-  return result
-    .toString()
+  return escapeHtml(result.toString())
     .split("\n")
     .slice(2)
     .map(str => {
@@ -244,11 +243,17 @@ function conjugationsForTense(verb, conjugations, tense) {
 }
 
 function getBaseFuture(futureConjs) {
-  const conj = futureConjs["il, elle, on"];
-  return conj.substring(0, conj.length - 1);
+  return futureConjs["il, elle, on"]
+    .split(", ")
+    .map(conj => conj.substring(0, conj.length - 1))
+    .join(", ");
 }
 
-function getBaseConditional(conditionalConjs) {
-  const conj = conditionalConjs["il, elle, on"];
-  return conj.substring(0, conj.length - 3);
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
