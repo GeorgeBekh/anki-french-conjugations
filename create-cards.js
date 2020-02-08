@@ -113,7 +113,8 @@ JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
         } else if (base) {
           question = "futur, conditionnel (base)";
         } else if (conjugation) {
-          question = `${namingMap[tense]}<br/>${pronoun}`;
+          question = `${namingMap[tense]}`;
+          question += pronoun ? "<br/>" + pronoun : "";
         } else {
           question = "définition";
         }
