@@ -64,37 +64,30 @@ JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
         ORDER BY
           avg DESC
         LIMIT
-          20;
+          500
         `
     )
   ).map(({ lemme }) => lemme);
 
   const promises = verbs.map(async (verb, i) => {
     let cards = [];
+    const definition = dictionaryDefinition(verb);
+    if (definition) {
+      cards.push({ verb, definition });
+    }
     if (!models.hasOwnProperty(verb)) {
       const model = childrenToModels[verb];
       if (!model) {
         //regular verb
         return [];
       }
-      console.log("model: ", model);
-      return [
-        {
-          verb,
-          definition: dictionaryDefinition(verb)
-        },
-        {
-          verb,
-          model
-        }
-      ];
+      cards.push({
+        verb,
+        model
+      });
+      return cards;
     }
 
-    cards.push({
-      verb,
-      tense: "infinitive present",
-      definition: dictionaryDefinition(verb)
-    });
     const conjugations = await conjugate(verb);
     tenses.forEach(tense => {
       cards = cards.concat(conjugationsForTense(verb, conjugations, tense));
@@ -116,7 +109,7 @@ JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
         const ipa = await getIPA(conjugation || base || verb);
         let question;
         if (model) {
-          question = "conjugué comme...";
+          question = "conjugue comme...";
         } else if (base) {
           question = "futur, conditionnel (base)";
         } else if (conjugation) {
@@ -198,13 +191,21 @@ function dictionaryDefinition(word) {
   try {
     result = childProcess.execSync("dict -d fd-fra-rus -f " + word);
   } catch (err) {
-    result = childProcess.execSync("dict -d fd-fra-eng -f " + word);
+    try {
+      result = childProcess.execSync("dict -d fd-fra-eng -f " + word);
+    } catch (err) {
+      result = "";
+    }
   }
+
   return result
     .toString()
     .split("\n")
-    .slice(3)
-    .join("\n");
+    .slice(2)
+    .map(str => {
+      return str.startsWith("localhost") ? "<br/>" : str;
+    })
+    .join("<br/>");
 }
 
 function conjugationsForTense(verb, conjugations, tense) {
