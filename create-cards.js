@@ -19,6 +19,11 @@ const tenses = [
   "imperative present"
 ];
 
+const coloring = {
+  "indicative imperfect": "#0000ca",
+  "imperative present": "#db0000"
+};
+
 const namingMap = {
   "indicative present": "présent",
   "participle past": "participe passé",
@@ -113,7 +118,13 @@ JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
         } else if (base) {
           question = "futur, conditionnel (base)";
         } else if (conjugation) {
-          question = `${namingMap[tense]}`;
+          if (coloring[tense]) {
+            question = `<span style="color: ${coloring[tense] || black};">${
+              namingMap[tense]
+            }</span>`;
+          } else {
+            question = `${namingMap[tense]}`;
+          }
           question += pronoun ? "<br/>" + pronoun : "";
         } else {
           question = "définition";
