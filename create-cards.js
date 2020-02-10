@@ -43,12 +43,16 @@ const models = {};
 const irregular = {};
 
 const childrenToModels = {};
+
+const definitions = {};
 JSON.parse(fs.readFileSync("./models/models.json")).forEach(obj => {
   obj.children.forEach(child => {
     childrenToModels[child] = obj.model;
   });
   models[obj.model] = false;
 });
+
+prepareDefinitions();
 
 (async function() {
   const verbs = (
@@ -200,23 +204,33 @@ async function getIPA(word) {
 }
 
 function dictionaryDefinition(word) {
-  let result = "";
-  try {
-    result = childProcess.execSync("dict -d fd-fra-rus -f " + word);
-  } catch (err) {
-    try {
-      result = childProcess.execSync("dict -d fd-fra-eng -f " + word);
-    } catch (err) {
-      result = "";
-    }
+  const defs = definitions[word];
+  if (!defs) {
+    return;
   }
-  return escapeHtml(result.toString())
-    .split("\n")
-    .slice(2)
-    .map(str => {
-      return str.startsWith("localhost") ? "<br/>" : str;
-    })
-    .join("<br/>");
+  return (
+    "<ol>" +
+    defs.reduce((result, { tr }) => {
+      return (
+        result +
+        tr.reduce((result, { text, ex }) => {
+          return (
+            result +
+            "<li>" +
+            text +
+            "<ul>" +
+            (ex || []).reduce(
+              (r, ex) => r + "<li>" + ex.text + " - " + ex.tr[0].text + "</li>",
+              ""
+            ) +
+            "</ul>" +
+            "</li>"
+          );
+        }, "")
+      );
+    }, "") +
+    "</ol>"
+  );
 }
 
 function conjugationsForTense(verb, conjugations, tense) {
@@ -268,4 +282,12 @@ function escapeHtml(unsafe) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function prepareDefinitions() {
+  JSON.parse(fs.readFileSync("./definitions.json")).forEach(({ def }) => {
+    if (def[0]) {
+      definitions[def[0].text] = def;
+    }
+  });
 }
